@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <TlHelp32.h>
+#include <ntstatus.h>
 
 #include "detours.h"
 #pragma comment(lib, "detours.lib")
@@ -89,5 +90,11 @@ typedef FARPROC(WINAPI* tGetProcAddress)(HMODULE hModule, LPCSTR lpProcName);
 tGetProcAddress pGetProcAddress;
 
 FARPROC __stdcall hkGetProcAddress(HMODULE hModule, LPCSTR lpProcName);
+
+//NtReadVirtualMemory
+typedef NTSTATUS (NTAPI* tNtReadVirtualMemory)(HANDLE ProcessHandle,PVOID  BaseAddress,PVOID  Buffer,ULONG NumberOfBytesToRead,PULONG NumberOfBytesReaded);
+tNtReadVirtualMemory pNtReadVirtualMemory;
+
+NTSTATUS NTAPI hkNtReadVirtualMemory(HANDLE ProcessHandle, PVOID BaseAddress, PVOID Buffer, ULONG NumberOfBytesToRead, PULONG NumberOfBytesReaded);
 
 bool InitHooks();
