@@ -91,10 +91,4 @@ tGetProcAddress pGetProcAddress;
 
 FARPROC __stdcall hkGetProcAddress(HMODULE hModule, LPCSTR lpProcName);
 
-//NtReadVirtualMemory
-typedef NTSTATUS (NTAPI* tNtReadVirtualMemory)(HANDLE ProcessHandle,PVOID  BaseAddress,PVOID  Buffer,ULONG NumberOfBytesToRead,PULONG NumberOfBytesReaded);
-tNtReadVirtualMemory pNtReadVirtualMemory;
-
-NTSTATUS NTAPI hkNtReadVirtualMemory(HANDLE ProcessHandle, PVOID BaseAddress, PVOID Buffer, ULONG NumberOfBytesToRead, PULONG NumberOfBytesReaded);
-
 bool InitHooks();
