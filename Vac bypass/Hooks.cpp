@@ -67,10 +67,6 @@ FARPROC __stdcall hkGetProcAddress(HMODULE hModule, LPCSTR lpProcName){
 	return 0;
 }
 
-NTSTATUS _stdcall hkNtReadVirtualMemory(HANDLE ProcessHandle, PVOID BaseAddress, PVOID Buffer, ULONG NumberOfBytesToRead, PULONG NumberOfBytesReaded){
-	return STATUS_SUCCESS;
-}
-
 bool InitHooks(){
 	HMODULE kernelModule = GetModuleHandleA("kernel32.dll");
 	if (kernelModule == INVALID_HANDLE_VALUE) { return false; }
@@ -88,6 +84,5 @@ bool InitHooks(){
 	pGetWindowTextA = (tGetWindowTextA)DetourFunction((PBYTE)GetProcAddress(GetModuleHandleA("User32.dll"), "GetWindowTextA"), (PBYTE)hkGetWindowTextA);
 	pBitBlt = (tBitBlt)DetourFunction((PBYTE)GetProcAddress(GetModuleHandleA("Gdi32.dll"), "BitBlt"), (PBYTE)hkBitBlt);
 	pGetProcAddress = (tGetProcAddress)DetourFunction((PBYTE)GetProcAddress(kernelModule, "GetProcAddress"), (PBYTE)hkGetProcAddress);
-	pNtReadVirtualMemory = (tNtReadVirtualMemory)DetourFunction((PBYTE)GetProcAddress(GetModuleHandleA("ntdll.dll"), "NtReadVirtualMemory"), (PBYTE)hkNtReadVirtualMemory);
 	return true;
 }
