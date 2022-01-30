@@ -1,4 +1,3 @@
-#pragma once
 #include "Hooks.h"
 
 SIZE_T __stdcall hkVirtualQuery(LPCVOID lpAdress, PMEMORY_BASIC_INFORMATION lpBuffer, SIZE_T dwLength){
@@ -56,7 +55,7 @@ BOOL _stdcall hkGetFileInformationByHandle(HANDLE hFile, LPBY_HANDLE_FILE_INFORM
 
 int __stdcall hkGetWindowTextA(HWND hwnd, LPSTR lpString, int nMaxCount){
 	lpString = (LPSTR)"chrome";
-	return 0;
+	return strlen("chrome");
 }
 
 BOOL __stdcall hkBitBlt(HDC hdc, int x, int y, int cx, int cy, HDC hdcSrc, int x1, int y1, DWORD rop){
@@ -67,7 +66,7 @@ FARPROC __stdcall hkGetProcAddress(HMODULE hModule, LPCSTR lpProcName){
 	return 0;
 }
 
-bool InitHooks(){
+bool InitHooks(void){
 	HMODULE kernelModule = GetModuleHandleA("kernel32.dll");
 	if (kernelModule == INVALID_HANDLE_VALUE) { return false; }
 	pVirtualQuery = (tVirtualQuery)DetourFunction((PBYTE)GetProcAddress(kernelModule, "VirtualQuery"), (PBYTE)hkVirtualQuery);
