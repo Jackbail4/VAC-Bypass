@@ -31,8 +31,8 @@ SIZE_T __stdcall hkVirtualQuery(LPCVOID lpAdress, PMEMORY_BASIC_INFORMATION lpBu
 
 SIZE_T __stdcall hkVirtualQueryEx(HANDLE hProcess, LPCVOID lpAdress, PMEMORY_BASIC_INFORMATION lpBuffer, SIZE_T dwLength) {
 	lpBuffer->AllocationProtect = PAGE_NOACCESS;
-	lpBuffer->State = PAGE_NOACCESS;
 	lpBuffer->Protect = PAGE_NOACCESS;
+	lpBuffer->Type = MEM_MAPPED;
 	return pVirtualQueryEx(hProcess, lpAdress, 0, dwLength);
 }
 
