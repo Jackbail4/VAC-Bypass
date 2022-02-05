@@ -16,4 +16,8 @@ What does it do?
 - Blocks ability to find processes loaded onto the system
 - Blocks ability to find modules loaded into any process
 
+Does it work?
+I had cheat engine opened mutiple times throughout a couple of weeks, still no VAC bans 2 months later, still no bans. I've talked
+too many people who have also used it and they haven't been VAC banned, so yes this bypass does work!
+
 [Confused?](https://youtu.be/hPbKBwfIC0E)
