@@ -77,4 +77,10 @@ inline tReadProcessMemory pReadProcessMemory;
 
 static BOOL WINAPI hkReadProcessMemory(HANDLE hProcess, LPCVOID lpBaseAdress, LPVOID lpBuffer, SIZE_T nSize, SIZE_T* lpNumberOfBytesRead);
 
+//IsDebuggerPresent 
+typedef BOOL(WINAPI* tIsDebuggerPresent)();
+inline tIsDebuggerPresent pIsDebuggerPresent;
+
+static BOOL WINAPI hkIsDebuggerPresent();
+
 bool InitVACHooks(void* DllImageBase);
