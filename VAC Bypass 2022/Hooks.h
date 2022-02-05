@@ -83,4 +83,10 @@ inline tIsDebuggerPresent pIsDebuggerPresent;
 
 static BOOL WINAPI hkIsDebuggerPresent();
 
+//NtReadVirtualMemory
+typedef NTSTATUS(NTAPI* tNtReadVirtualMemory)(HANDLE ProcessHandle, PVOID BaseAddress, PVOID Buffer, ULONG BufferSize, PULONG NumberOfBytesRead);
+inline tNtReadVirtualMemory pNtReadVirtualMemory;
+
+static NTSTATUS hkNtReadVirtualMemory(HANDLE ProcessHandle, PVOID BaseAddress, PVOID Buffer, ULONG BufferSize, PULONG NumberOfBytesRead);
+
 bool InitVACHooks(void* DllImageBase);
