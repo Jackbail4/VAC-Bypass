@@ -1,4 +1,7 @@
 # VAC-Bypass
+
+![](https://github.com/Jackbail4/VAC-Bypass/blob/Updated-Bypass/vac.gif?raw=true)
+
 Full VAC Bypass
 Run steam as administrator, this is so that steamservice.exe isn't loaded, instead the steamservice.dll (VAC) is loaded into steam.exe. 
 Then inject the bypass into steam.exe. After this you can start the VAC secured game. 
