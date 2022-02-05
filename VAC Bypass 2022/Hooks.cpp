@@ -56,6 +56,10 @@ BOOL __stdcall hkReadProcessMemory(HANDLE hProcess, LPCVOID lpBaseAdress, LPVOID
 	return 0;
 }
 
+BOOL __stdcall hkIsDebuggerPresent(){
+	return FALSE;
+}
+
 bool InitVACHooks(void* DllImageBase) {
 	pFn1 = (tFn1)DetourFunction((PBYTE)PatternScan(DllImageBase, "55 8B EC 83 EC ? 8D 45 F8 C7 45 F8 ? ? ? ?"), (PBYTE)hkTfn1);
 	pFn2 = (tFn2)DetourFunction((PBYTE)PatternScan(DllImageBase, "55 8B EC 81 EC ? ? ? ? 53 56 57 6A ? 68 ? ? ? ?"), (PBYTE)hkTfn2);
@@ -72,6 +76,7 @@ bool InitVACHooks(void* DllImageBase) {
 	pProcess32NextW = (tProcess32NextW)DetourFunction((PBYTE)GetProcAddress(kernelModule, "Process32NextW"), (PBYTE)hkProcess32NextW);
 	pModule32NextW = (tModule32NextW)DetourFunction((PBYTE)GetProcAddress(kernelModule, "Module32NextW"), (PBYTE)hkModule32NextW);
 	pReadProcessMemory = (tReadProcessMemory)DetourFunction((PBYTE)GetProcAddress(kernelModule, "ReadProcessMemory"), (PBYTE)hkReadProcessMemory);
+	pIsDebuggerPresent = (tIsDebuggerPresent)DetourFunction((PBYTE)GetProcAddress(kernelModule, "IsDebuggerPresent"), (PBYTE)hkIsDebuggerPresent);
 
 	return true;
 }
