@@ -21,3 +21,8 @@ I had cheat engine opened mutiple times throughout a couple of weeks, still no V
 too many people who have also used it and they haven't been VAC banned, so yes this bypass does work!
 
 [Confused?](https://www.youtube.com/watch?v=Jnn-1gRsrPc)
+
+![](https://i.postimg.cc/9fDvLQDM/vac.jpg)
+
+## I will always keep this up to date
+**[Get news here](https://discord.gg/dExJ9Sck7n)**
