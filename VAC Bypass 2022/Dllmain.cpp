@@ -4,6 +4,8 @@
 #include "Scanner.h"
 #include "Hooks.h"
 
+//Join my discord server https://discord.gg/dExJ9Sck7n
+
 void MainThread(HMODULE hModule) {
 	HMODULE hSteamService = GetModuleHandleA("steamservice.dll");
 
