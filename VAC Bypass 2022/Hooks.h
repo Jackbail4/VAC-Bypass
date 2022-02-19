@@ -47,6 +47,12 @@ inline tFn6 pFn6;
 
 DWORD* _stdcall hkTfn6(DWORD* p_this);
 
+//55 8B EC 81 EC ? ? ? ? 53 8B D9 32 C0 char __thiscall sub_5F400(_BYTE *this, int a2, HANDLE TargetHandle, int a4, int a5, int a6)
+typedef char (__thiscall* tFn7)(BYTE* p_this, int a2, HANDLE TargetHandle, int a4, int a5, int a6);
+inline tFn7 pFn7;
+
+char _stdcall hkTfn7(BYTE* p_this, int a2, HANDLE TargetHandle, int a4, int a5, int a6);
+
 //VirtualQuery
 typedef SIZE_T(WINAPI* tVirtualQuery)(LPCVOID lpAdress, PMEMORY_BASIC_INFORMATION lpBuffer, SIZE_T dwLength);
 inline tVirtualQuery pVirtualQuery;
