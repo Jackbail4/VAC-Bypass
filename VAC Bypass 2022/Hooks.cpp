@@ -58,10 +58,6 @@ BOOL __stdcall hkModule32NextW(HANDLE hSnapShot, LPMODULEENTRY32W lppe) {
 	return 0;
 }
 
-BOOL __stdcall hkReadProcessMemory(HANDLE hProcess, LPCVOID lpBaseAdress, LPVOID lpBuffer, SIZE_T nSize, SIZE_T* lpNumberOfBytesRead) {
-	return 0;
-}
-
 BOOL __stdcall hkIsDebuggerPresent(){
 	return false;
 }
@@ -87,7 +83,6 @@ bool InitVACHooks(void* DllImageBase) {
 	pVirtualQueryEx = (tVirtualQueryEx)DetourFunction((PBYTE)GetProcAddress(kernelModule, "VirtualQueryEx"), (PBYTE)hkVirtualQueryEx);
 	pProcess32NextW = (tProcess32NextW)DetourFunction((PBYTE)GetProcAddress(kernelModule, "Process32NextW"), (PBYTE)hkProcess32NextW);
 	pModule32NextW = (tModule32NextW)DetourFunction((PBYTE)GetProcAddress(kernelModule, "Module32NextW"), (PBYTE)hkModule32NextW);
-	pReadProcessMemory = (tReadProcessMemory)DetourFunction((PBYTE)GetProcAddress(kernelModule, "ReadProcessMemory"), (PBYTE)hkReadProcessMemory);
 	pIsDebuggerPresent = (tIsDebuggerPresent)DetourFunction((PBYTE)GetProcAddress(kernelModule, "IsDebuggerPresent"), (PBYTE)hkIsDebuggerPresent);
 	pNtReadVirtualMemory = (tNtReadVirtualMemory)DetourFunction((PBYTE)GetProcAddress(GetModuleHandleA("ntdll.dll"), "NtReadVirtualMemory"), (PBYTE)hkNtReadVirtualMemory);
 
