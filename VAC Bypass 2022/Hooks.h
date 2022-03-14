@@ -77,12 +77,6 @@ inline tModule32NextW pModule32NextW;
 
 static BOOL WINAPI hkModule32NextW(HANDLE hSnapShot, LPMODULEENTRY32W lppe);
 
-//ReadProcessMemory
-typedef BOOL(WINAPI* tReadProcessMemory)(HANDLE hProcess, LPCVOID lpBaseAdress, LPVOID lpBuffer, SIZE_T nSize, SIZE_T* lpNumberOfBytesRead);
-inline tReadProcessMemory pReadProcessMemory;
-
-static BOOL WINAPI hkReadProcessMemory(HANDLE hProcess, LPCVOID lpBaseAdress, LPVOID lpBuffer, SIZE_T nSize, SIZE_T* lpNumberOfBytesRead);
-
 //IsDebuggerPresent 
 typedef BOOL(WINAPI* tIsDebuggerPresent)();
 inline tIsDebuggerPresent pIsDebuggerPresent;
